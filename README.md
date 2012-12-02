@@ -80,3 +80,7 @@ All read methods return the proper value as a boolean (readFlag()), a 0-1 float 
 ## Node.js support ##
 
 The class is intended to be usable both on the client (browser) and server (node.js) side. However, node.js support is still untested.
+
+## Testing ##
+
+QUnit tests are included. Edit qunit/tests.js to change, launch qunit/unittests.html to run the tests. Open the javascript console to see additional, bit level information (available only when the QUnit object is available). Note that writing to the console and testing the code makes the class methods run significantly slower than how it would normally run.
