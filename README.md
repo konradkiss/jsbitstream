@@ -67,11 +67,13 @@ var results = [
 
 ## Available methods ##
 
-* **readString(), writeString(text)** *Reads from and writes a string into the bitstream. Maximum length is 65535 characters. Automatically uses the smallest possible code page taking from 4 (numeric) up to 16 bits (unicode) per character.*
-* **readInt(), writeInt(integer)** *Reads from and writes an arbitrary size integer into the bitstream. The integer is tested fr size and will use up 5+ bits. This is primarily useful when the value is unknown and may vary greatly. Very large numbers are sent as a numeric string.*
-* **readFloat(), writeFloat()** *Reads from and writes a relative floating point value (having a value between 0 and 1) into the bitstream. This has an 8 bit precision, so values written and then read might have a rough difference of up to 0.008. For writing other floats, it is preferable that the float is converted into an integer at write time and deconverted at read time to best fit your use case.*
-* **readU4(), writeU4(), readU8(), writeU8(), readU()16, writeU16(), readU32(), writeU32()** *Reads from and writes fixed size integers into the bitstream. Useful when you know how large a specific value can be.*
-* **readFlag, writeFlag()** *Reads from and writes a boolean value into the bitstream using a single bit.*
+* **readString(), writeString(value)** *Reads from and writes a string into the bitstream. Maximum length is 65535 characters. Automatically uses the smallest possible code page taking from 4 (numeric) up to 16 bits (unicode) per character.*
+* **readInt(), writeInt(value)** *Reads from and writes an arbitrary size integer into the bitstream. The integer is tested fr size and will use up 5+ bits. This is primarily useful when the value is unknown and may vary greatly. Very large numbers are sent as a numeric string.*
+* **readFloat(), writeFloat(value)** *Reads from and writes a relative floating point value (having a value between 0 and 1) into the bitstream. This has an 8 bit precision, so values written and then read might have a rough difference of up to 0.008. For writing other floats, it is preferable that the float is converted into an integer at write time and deconverted at read time to best fit your use case.*
+* **readU4(), writeU4(value), readU8(), writeU8(value), readU()16, writeU16(value), readU32(), writeU32(value)** *Reads from and writes fixed size integers into the bitstream. Useful when you know how large a specific value can be.*
+* **readFlag, writeFlag(value)** *Reads from and writes a boolean value into the bitstream using a single bit.*
+
+All read methods return the proper value as a boolean (readFlag()), a 0-1 float (readFloat), a string (readString() and readInt() for integers taking more than 32 bits) and an integers.
 
 ## Node.js support ##
 
