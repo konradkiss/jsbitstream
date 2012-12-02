@@ -72,3 +72,7 @@ var results = [
 * **readFloat(), writeFloat()** *Reads from and writes a relative floating point value (having a value between 0 and 1) into the bitstream. This has an 8 bit precision, so values written and then read might have a rough difference of up to 0.008. For writing other floats, it is preferable that the float is converted into an integer at write time and deconverted at read time to best fit your use case.*
 * **readU4(), writeU4(), readU8(), writeU8(), readU()16, writeU16(), readU32(), writeU32()** *Reads from and writes fixed size integers into the bitstream. Useful when you know how large a specific value can be.*
 * **readFlag, writeFlag()** *Reads from and writes a boolean value into the bitstream using a single bit.*
+
+## Node.js support ##
+
+The class is intended to be usable both on the client (browser) and server (node.js) side. However, node.js support is still untested.
