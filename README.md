@@ -5,7 +5,7 @@
 
 ## What is it? ##
 
-JSBitStream is a Javascript class to read and write bit level data into and out of a stream. It was created to preserve as many bits and bytes during network communication as possible without sacrificing speed (ie. through compression). It was intended to prepare network packets for multiplazer HTML5 games for example.
+JSBitStream is a Javascript class to read and write bit level data into and out of a stream. It was created to preserve as many bits and bytes during network communication as possible without sacrificing speed (ie. through compression). It was intended to prepare network packets for multiplayer HTML5 games.
 
 ## How does it work? ##
 
