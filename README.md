@@ -19,7 +19,7 @@ The class has built-in methods to read and write the kind of data that appears i
 * Booleans (true or false)
 * Floats with a value between 0 and 1 with 8 bit precision
 * 4, 8, 16 and 32 bit fixed integers
-* Integers where the bit length is tested against (the smaller the number the less bits used)
+* Integers with fixed or variable bit count
 * Strings where characters are tested against character maps to use only as many bits for each character as required:
   * 4 (numeric characters + space, "+", "-", ",", "."), 
   * 5 (lower case only alphabet + space, "|", "'", "-", "." and ","), 
