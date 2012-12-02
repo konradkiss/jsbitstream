@@ -1,3 +1,5 @@
+**Attention! This library is rather young and it is still to be tested in a live scenario. Although there are thorough unit tests included, be sure to do additional tests tailored to your own environment before using the class.**
+
 # JSBitStream #
 ---
 
