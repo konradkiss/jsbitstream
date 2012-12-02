@@ -491,7 +491,7 @@ var JSBitStream = function()
 
    // if QUnit is available it is safe to assume that JSBitStream is being unit tested
    // so it should provide tools that provide additional info within the console:
-   if (false && typeof QUnit !== 'undefined')
+   if (typeof QUnit !== 'undefined')
    {
       this.debug           = true;
       this.lastBitsAdded   = 0;  // debug only, shows how many bits have been added to the stream during the latest write
