@@ -7,7 +7,9 @@ JSBitStream is a Javascript class to read and write bit level data into and out 
 
 ## How does it work? ##
 
-You can write any value or string and concatenate all these values regardless of where a byte or a character boundary would be. All bits form unicode characters and data is stored as unicode text. The last character has its bits padded with zeroes to make sure it forms a full 16 bit unicode character.
+Instead of sending an entire 16 bits for every unicode character of your data, depending on the type it is possible to decrease the size of your data down to a single bit. When these bits are compressed together, you can save much bandwidth through your stream's size.
+
+You can write any value or string and concatenate all these values regardless of where a byte or a character boundary would be. All the bits of your data are stored as unicode text. The last character has its bits padded with zeroes to make sure it forms a full 16 bit unicode character.
 
 Writing to a stream adds bits at the end of the stream while reading from a stream strips data from the beginning of the stream - so the stream's size keeps changing automatically as you write to and read from it. For this reason you need to have the same amount and same kind of reads as you had writes.
 
@@ -68,4 +70,4 @@ var results = [
 * **readInt(), writeInt(integer)** *Reads from and writes an arbitrary size integer into the bitstream. The integer is tested fr size and will use up 5+ bits. This is primarily useful when the value is unknown and may vary greatly. Very large numbers are sent as a numeric string.*
 * **readFloat(), writeFloat()** *Reads from and writes a relative floating point value (having a value between 0 and 1) into the bitstream. This has an 8 bit precision, so values written and then read might have a rough difference of up to 0.008. For writing other floats, it is preferable that the float is converted into an integer at write time and deconverted at read time to best fit your use case.*
 * **readU4(), writeU4(), readU8(), writeU8(), readU()16, writeU16(), readU32(), writeU32()** *Reads from and writes fixed size integers into the bitstream. Useful when you know how large a specific value can be.*
-
+* **readFlag, writeFlag()** *Reads from and writes a boolean value into the bitstream using a single bit.*
