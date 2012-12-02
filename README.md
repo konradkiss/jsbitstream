@@ -14,7 +14,7 @@ You can write any value or string and concatenate all these values regardless of
 Writing to a stream adds bits at the end of the stream while reading from a stream strips data from the beginning of the stream - so the stream's size keeps changing automatically as you write to and read from it. For this reason you need to have the same amount and same kind of reads as you had writes.
 
 The class has built-in methods to read and write the kind of data that appears in games, such as:
-* Boolean (true or false) values
+* Booleans (true or false)
 * Floats with a value between 0 and 1 with 8 bit precision
 * 4, 8, 16 and 32 bit fixed integers
 * Integers where the bit length is tested against (the smaller the number the less bits used)
