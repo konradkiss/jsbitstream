@@ -84,3 +84,21 @@ The class is intended to be usable both on the client (browser) and server (node
 ## Testing ##
 
 QUnit tests are included. Edit qunit/tests.js to change, launch qunit/unittests.html to run the tests. Open the javascript console to see additional, bit level information (available only when the QUnit object is available). Note that writing to the console and testing the code makes the class methods run significantly slower than how it would normally run.
+
+Example bit level debug information that is available in the console:
+
+    ...
+    
+    writeBits preparing to write 5 of 5 bit(s)
+    writeBits writing 5 bit(s) with a value of '00100' from 4.5 to 4.10
+    
+    1000000110100000    0x81 0xa0    129 160    33184    膠
+    0000000011001000    0x00 0xc8      0 200      200    È
+    0001011011110011    0x16 0xf3     22 243     5875    ᛳ
+    1000001111111010    0x83 0xfa    131 250    33786    菺
+    0000100100000000    0x09 0x00      9   0     2304    ऀ
+         <--->
+    SIZE: 74 bits / 5 characters
+    
+    ...
+
