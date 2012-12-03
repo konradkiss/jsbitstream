@@ -18,9 +18,8 @@ Writing to a stream adds bits at the end of the stream while reading from a stre
 The class has built-in methods to read and write the kind of data that appears in games, such as:
 * Booleans (true or false)
 * Floats with a value between 0 and 1 with 8 bit precision
-* 4, 8, 16 and 32 bit fixed integers
-* Integers with fixed or variable bit count
-* Strings where characters are tested against character maps to use only as many bits for each character as required:
+* Integers with a 4, 8, 16 and 32 bit fixed or variable bit count
+* Strings that are tested against character maps to use only as many bits for each character as required:
   * 4 (numeric characters + space, "+", "-", ",", "."), 
   * 5 (lower case only alphabet + space, "|", "'", "-", "." and ","), 
   * 6 (alphanumeric characters + space and ","), 
@@ -42,7 +41,7 @@ stream.writeFlag(true);
 stream.writeInt(0x01256789);
 stream.writeU4(0x0C);
 stream.writeU16(0xa987);
-stream.writeString("Nothing to see here!");
+stream.writeString("Nothing to see here!"); // will take 7 bits per character since all character codes are below 0x7F
 stream.writeU8(0x52);
 stream.writeU32(0x81818181);
 
