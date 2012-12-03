@@ -51,16 +51,16 @@ console.log(stream.data); // result is a 18 character unicode string starting li
 
 // let's read all the data back from the stream
 var results = [
-  stream.writeInt(3),
-  stream.writeInt(519),
-  stream.writeFlag(false),
-  stream.writeFlag(true),
-  stream.writeInt(0x01256789),
-  stream.writeU4(0x0C),
-  stream.writeU16(0xa987),
-  stream.writeString("Nothing to see here!"),
-  stream.writeU8(0x52),
-  stream.writeU32(0x81818181)
+  stream.readInt(),
+  stream.readInt(),
+  stream.readFlag(),
+  stream.readFlag(),
+  stream.readInt(),
+  stream.readU4(),
+  stream.readU16(),
+  stream.readString(),
+  stream.readU8(),
+  stream.readU32()
 ];
 
 // here, with decimal values result is:
