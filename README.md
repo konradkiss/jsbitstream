@@ -62,6 +62,8 @@ var results = [
   stream.readU32()
 ];
 
+console.log(stream.data); // returns an empty string as each read also removes the read data from the stream
+
 // here, with decimal values 'results' is:
 // [3, 519, false, true, 19228553, 12, 43399, "Nothing to see here!", 82, 2172748161]
 ```
