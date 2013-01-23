@@ -1,0 +1,1825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		<title>JSBitStream | JsDoc Reference</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="mobileoptimized" content="0" />
+	
+		<link rel="stylesheet" href="../css/all.css" media="all" />
+		<link rel="stylesheet" href="../css/handheld.css" media="only screen and (max-width: 660px)" />
+		<link rel="stylesheet" href="../css/handheld.css" media="handheld" />
+		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)" />
+
+		<script src="../javascript/all.js"></script>
+		<!--[if lt IE 9]>
+			<script src="../javascript/html5.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+<div class="index">
+	<div class="menu">
+		<div class="indexLinks">
+			<a href="../index.html">Classes</a>
+			<a href="../files.html">Files</a>
+		</div>
+	
+		<h2 class="heading1">Classes</h2>
+		
+		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
+		
+		<nav>
+			<ul class="classList" id="ClassList">
+				
+					<li><a href="../symbols/_global_.html">_global_</a></li>
+				
+					<li><a href="../symbols/JSBitStream.html">JSBitStream</a></li>
+				
+			</ul>
+		</nav>
+	</div>
+	<div class="fineprint" style="clear:both">
+		<footer>
+			
+			Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
+			Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
+			Generated on:
+			<time datetime='2013-0-23' pubdate>2013-0-23 15:52</time>
+		</footer>
+	</div>
+</div>
+
+<div class="index indexStatic"></div>
+
+<div class="content">
+	<div class="innerContent">
+		<article>
+			<header>
+				<h1 class="classTitle">
+					
+					Namespace <span>JSBitStream</span>
+				</h1>
+				
+				<div class="intro">
+					<p class="description summary">
+						
+					</p>
+						
+					
+						<ul class="summary">
+							
+							
+							
+								<li>Defined in: <a href="../symbols/src/E__github_JSBitStream_jsbitstream.js.html">jsbitstream.js</a></li>
+							
+							
+						</ul>
+					
+				</div>
+			</header>
+			
+			
+				<section>
+					<div class="props">
+						<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JSBitStream.">
+							<caption class="sectionTitle">Namespace Summary</caption>
+							<thead>
+								<tr>
+									<th scope="col">Constructor Attributes</th>
+									<th scope="col">Constructor Name and Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription" >
+										<div class="fixedFont">
+											<b><a href="../symbols/JSBitStream.html#constructor">JSBitStream</a></b>
+										</div>
+										<div class="description">JSBitStream is a Javascript class to read and write bit level data into and out of a stream.</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			
+			
+			
+				
+				<section>
+					
+						<nav>
+							<div class="props">
+								<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class JSBitStream.">
+									<caption class="sectionTitle">Field Summary</caption>
+									
+									<thead>
+										<tr>
+											<th scope="col">Field Attributes</th>
+											<th scope="col">Field Name and Description</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										
+											<tr>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont">
+													<b><a href="../symbols/JSBitStream.html#bitOffset">bitOffset</a></b>
+													</div>
+													<div class="description">The number of bits used in the first character</div>
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont">
+													<b><a href="../symbols/JSBitStream.html#data">data</a></b>
+													</div>
+													<div class="description">The string buffer packing 16 bits into each Unicode character - every character represents two 8 bit values</div>
+												</td>
+											</tr>
+										
+											<tr>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont">
+													<b><a href="../symbols/JSBitStream.html#lastCharBits">lastCharBits</a></b>
+													</div>
+													<div class="description">The number of used bits (0-15) in the final incomplete 16 bit character (0 if all 16 bits are used)</div>
+												</td>
+											</tr>
+										
+									</tbody>
+								</table>
+							</div>
+						</nav>
+					
+					
+					
+				</section>
+			
+	<!--
+	#### METHODS SUMMARY
+	-->
+			
+				<section>
+					
+					
+					<div class="props">
+						<h2 class="sectionTitle">Method Summary</h2>
+						
+						
+							<nav>
+								<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class JSBitStream.">
+									<thead>
+										<tr>
+											<th scope="col">Method Attributes</th>
+											<th scope="col">Method Name and Description</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										
+										
+											<tr
+												 class='item0'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#left_pad">left_pad</a></b>(val, len, str)
+													</div>
+													<div class="description">Left pads a string.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item1'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#log">log</a></b>(severity, message)
+													</div>
+													<div class="description">Log wrapper.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item2'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readBits">readBits</a></b>(count)
+													</div>
+													<div class="description">Reads an arbitrary amount of bits and returns it as a JSBitStream object.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item3'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readFlag">readFlag</a></b>()
+													</div>
+													<div class="description">Reads a boolean value from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item4'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readFloat">readFloat</a></b>()
+													</div>
+													<div class="description">Reads a relative float (0-1) value from the bitstream with 8 bit precision.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item5'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readInt">readInt</a></b>()
+													</div>
+													<div class="description">Reads a compressed integer from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item6'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readString">readString</a></b>()
+													</div>
+													<div class="description">Reads an arbitrary string from the stream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item7'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readU16">readU16</a></b>()
+													</div>
+													<div class="description">Reads a 16 bit number from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item8'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readU32">readU32</a></b>()
+													</div>
+													<div class="description">Reads a 32 bit value from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item9'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readU4">readU4</a></b>()
+													</div>
+													<div class="description">Reads a half-byte (4 bits) from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item10'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#readU8">readU8</a></b>()
+													</div>
+													<div class="description">Reads a byte (8 bits) from the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item11'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#serialize">serialize</a></b>(showLastAdd)
+													</div>
+													<div class="description">Serializes the bitstream for debugging.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item12'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#size">size</a></b>()
+													</div>
+													<div class="description">Returns the number of bits within the stream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item13'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeBits">writeBits</a></b>(writeBuffer, bitCount)
+													</div>
+													<div class="description">Writes an arbitrary amount of bits into the stream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item14'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeFlag">writeFlag</a></b>(val_boolean)
+													</div>
+													<div class="description">Writes a boolean value into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item15'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeFloat">writeFloat</a></b>(val_float)
+													</div>
+													<div class="description">Writes a relative float (0-1) value into the bitstream with 8 bit precision.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item16'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeInt">writeInt</a></b>(val)
+													</div>
+													<div class="description">Writes a compressed integer into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item17'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeString">writeString</a></b>(val, lowerCase)
+													</div>
+													<div class="description">Writes an arbitrary string into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item18'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeU16">writeU16</a></b>(val_u16)
+													</div>
+													<div class="description">Writes a 16 bit value into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item19'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeU32">writeU32</a></b>(val_u32)
+													</div>
+													<div class="description">Writes a 32 bit value into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item20'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeU4">writeU4</a></b>(val_u4)
+													</div>
+													<div class="description">Writes a half-byte (4 bits) value into the bitstream.</div>
+												</td>
+											</tr>
+										
+											<tr
+												 class='item21'
+											>
+												<td class="attributes">&nbsp;</td>
+												<td class="nameDescription">
+													<div class="fixedFont"><b><a href="../symbols/JSBitStream.html#writeU8">writeU8</a></b>(val_u8)
+													</div>
+													<div class="description">Writes a byte (8 bits) value into the bitstream.</div>
+												</td>
+											</tr>
+										
+									</tbody>
+								</table>
+							</nav>
+						
+					
+						
+					</div>
+				</section>
+			
+			
+	<!--
+	#### EVENTS SUMMARY
+	-->
+			
+	<!--
+	#### CONSTRUCTOR DETAILS
+	-->
+			
+				<section>
+					<div class="details props">
+						<div class="innerProps">
+							<h2 class="sectionTitle" id="constructor">
+								Namespace Detail
+							</h2>
+							
+							<div class="fixedFont">
+								<b>JSBitStream</b>
+							</div>
+							
+							<div class="description">
+								JSBitStream is a Javascript class to read and write bit level data into and out of a stream.It was created to preserve as many bits and bytes during network communication as possible without sacrificingspeed (ie. through compression). It was intended to prepare network packets for multiplayer HTML5 games.
+								
+							</div>
+							
+							
+						
+							
+							
+							
+						</div>
+					</div>
+				</section>
+			
+	<!--
+	#### FIELD DETAILS
+	-->
+			
+				<section>
+					<div class="details props">
+						<div class="innerProps">
+							<h2 class="sectionTitle">
+								Field Detail
+							</h2>
+							
+							
+								<div class="fixedFont heading" id="bitOffset">
+									<span class='lighter'>
+									
+									</span>
+									
+									
+									
+									<b>bitOffset</b>							
+								</div>
+								
+								<div class="description">
+									The number of bits used in the first character
+									
+									
+									
+								</div>
+								
+								
+									
+								
+								<div class="hr"></div>
+							
+								<div class="fixedFont heading" id="data">
+									<span class='lighter'>
+									
+									</span>
+									
+									
+									
+									<b>data</b>							
+								</div>
+								
+								<div class="description">
+									The string buffer packing 16 bits into each Unicode character - every character represents two 8 bit values
+									
+									
+									
+								</div>
+								
+								
+									
+								
+								<div class="hr"></div>
+							
+								<div class="fixedFont heading" id="lastCharBits">
+									<span class='lighter'>
+									
+									</span>
+									
+									
+									
+									<b>lastCharBits</b>							
+								</div>
+								
+								<div class="description">
+									The number of used bits (0-15) in the final incomplete 16 bit character (0 if all 16 bits are used)
+									
+									
+									
+								</div>
+								
+								
+									
+								
+								
+							
+						</div>
+					</div>
+				</section>
+			
+	<!--
+	#### METHOD DETAILS
+	-->		
+			
+				<section>
+					<div class="details props">
+						<div class="innerProps">
+							<h2 class="sectionTitle">
+								Method Detail
+							</h2>
+							
+							<ul class="methodDetail" id="MethodDetail">
+								
+								
+									<li 
+										 class='item0'
+									>
+										<div class="fixedFont heading" id="left_pad">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{String}</span>
+											
+											<b>left_pad</b>(val, len, str)
+										</div>
+										
+										<div class="description">
+											Left pads a string.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val</b>
+														
+													</dt>
+													<dd>Value to be padded</dd>
+												
+													<dt>
+														<b>len</b>
+														
+													</dt>
+													<dd>Length to be padded to.</dd>
+												
+													<dt>
+														<b>str</b>
+														
+													</dt>
+													<dd>String to pad with.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{String}</span> The padded string.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item1'
+									>
+										<div class="fixedFont heading" id="log">
+											<span class='lighter'>
+											
+											</span>
+											
+											
+											
+											<b>log</b>(severity, message)
+										</div>
+										
+										<div class="description">
+											Log wrapper.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>severity</b>
+														
+													</dt>
+													<dd>{Number} Severity of the log message (0 - log, 1 - warn, 2 - error)</dd>
+												
+													<dt>
+														<b>message</b>
+														
+													</dt>
+													<dd>{String} The message to be logged.</dd>
+												
+											</dl>
+										
+										
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item2'
+									>
+										<div class="fixedFont heading" id="readBits">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{<a href="../symbols/JSBitStream.html">JSBitStream</a>}</span>
+											
+											<b>readBits</b>(count)
+										</div>
+										
+										<div class="description">
+											Reads an arbitrary amount of bits and returns it as a JSBitStream object. This always reads from bitOffset. Thefinal portion of the stream that was read is then shifted to have a 0 offset before converting to a type.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>count</b>
+														
+													</dt>
+													<dd>The number of bits to be read from the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{<a href="../symbols/JSBitStream.html">JSBitStream</a>}</span> The JSBitStream object representing the bits read.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item3'
+									>
+										<div class="fixedFont heading" id="readFlag">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Boolean}</span>
+											
+											<b>readFlag</b>()
+										</div>
+										
+										<div class="description">
+											Reads a boolean value from the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Boolean}</span> The boolean value read from the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item4'
+									>
+										<div class="fixedFont heading" id="readFloat">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>readFloat</b>()
+										</div>
+										
+										<div class="description">
+											Reads a relative float (0-1) value from the bitstream with 8 bit precision.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The number read from the bitstream. Note that this number will have a difference of up to 0.008.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item5'
+									>
+										<div class="fixedFont heading" id="readInt">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number|String}</span>
+											
+											<b>readInt</b>()
+										</div>
+										
+										<div class="description">
+											Reads a compressed integer from the bitstream. Useful for numbers where small (<256) andlarge (>65536 or >4294967296) values fluctuate.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number|String}</span> The integer read from the bitstream. For small numbers, this is a number, for large numbers                        this is a string.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item6'
+									>
+										<div class="fixedFont heading" id="readString">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{String}</span>
+											
+											<b>readString</b>()
+										</div>
+										
+										<div class="description">
+											Reads an arbitrary string from the stream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{String}</span> The string read.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item7'
+									>
+										<div class="fixedFont heading" id="readU16">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>readU16</b>()
+										</div>
+										
+										<div class="description">
+											Reads a 16 bit number from the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The 16 bit number read from the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item8'
+									>
+										<div class="fixedFont heading" id="readU32">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>readU32</b>()
+										</div>
+										
+										<div class="description">
+											Reads a 32 bit value from the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The 32 bit number read from the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item9'
+									>
+										<div class="fixedFont heading" id="readU4">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>readU4</b>()
+										</div>
+										
+										<div class="description">
+											Reads a half-byte (4 bits) from the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The 4 bit number read from the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item10'
+									>
+										<div class="fixedFont heading" id="readU8">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>readU8</b>()
+										</div>
+										
+										<div class="description">
+											Reads a byte (8 bits) from the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The 8 bit number read from the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item11'
+									>
+										<div class="fixedFont heading" id="serialize">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{String}</span>
+											
+											<b>serialize</b>(showLastAdd)
+										</div>
+										
+										<div class="description">
+											Serializes the bitstream for debugging.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>showLastAdd</b>
+														
+													</dt>
+													<dd>{Boolean} Show the last bits added. Defaults to false.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{String}</span> The serialized debug information.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item12'
+									>
+										<div class="fixedFont heading" id="size">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>size</b>()
+										</div>
+										
+										<div class="description">
+											Returns the number of bits within the stream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> teh number of bits within the stream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item13'
+									>
+										<div class="fixedFont heading" id="writeBits">
+											<span class='lighter'>
+											
+											</span>
+											
+											
+											
+											<b>writeBits</b>(writeBuffer, bitCount)
+										</div>
+										
+										<div class="description">
+											Writes an arbitrary amount of bits into the stream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>writeBuffer</b>
+														
+													</dt>
+													<dd>{String} A bit packed string containing the value to be written.</dd>
+												
+													<dt>
+														<b>bitCount</b>
+														
+													</dt>
+													<dd>{Number} The number of bits to write. Must be equal or less than 16 * the number of characters in                         writeBuffer.</dd>
+												
+											</dl>
+										
+										
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item14'
+									>
+										<div class="fixedFont heading" id="writeFlag">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Boolean}</span>
+											
+											<b>writeFlag</b>(val_boolean)
+										</div>
+										
+										<div class="description">
+											Writes a boolean value into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_boolean</b>
+														
+													</dt>
+													<dd>The boolean value to be written into the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Boolean}</span> The original boolean value passed as an argument.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item15'
+									>
+										<div class="fixedFont heading" id="writeFloat">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>writeFloat</b>(val_float)
+										</div>
+										
+										<div class="description">
+											Writes a relative float (0-1) value into the bitstream with 8 bit precision.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_float</b>
+														
+													</dt>
+													<dd>The value to be written into the bitstream. The value must be between 0 and 1 (inclusive).</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The number written into the bitstream (not the number passed as the original argument).</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item16'
+									>
+										<div class="fixedFont heading" id="writeInt">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number|String}</span>
+											
+											<b>writeInt</b>(val)
+										</div>
+										
+										<div class="description">
+											Writes a compressed integer into the bitstream. Use for numbers where small (<256)and large (>65536 or >4294967296) values fluctuate.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val</b>
+														
+													</dt>
+													<dd>The number to be written into the bitstream. For extremely large values, this is treated as a string.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number|String}</span> The value written into the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item17'
+									>
+										<div class="fixedFont heading" id="writeString">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{String}</span>
+											
+											<b>writeString</b>(val, lowerCase)
+										</div>
+										
+										<div class="description">
+											Writes an arbitrary string into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val</b>
+														
+													</dt>
+													<dd>(string) The string value to be written.</dd>
+												
+													<dt>
+														<b>lowerCase</b>
+														
+													</dt>
+													<dd>(boolean) Shows whether the string can be represented in a lower case format.                           Defaults to false. A full lowercase string takes less bits in the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{String}</span> The string that was inserted into the bitstream.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item18'
+									>
+										<div class="fixedFont heading" id="writeU16">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>writeU16</b>(val_u16)
+										</div>
+										
+										<div class="description">
+											Writes a 16 bit value into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_u16</b>
+														
+													</dt>
+													<dd>The number (16 bits) to be written into the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The original number passed as an argument.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item19'
+									>
+										<div class="fixedFont heading" id="writeU32">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>writeU32</b>(val_u32)
+										</div>
+										
+										<div class="description">
+											Writes a 32 bit value into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_u32</b>
+														
+													</dt>
+													<dd>The number (32 bits) to be written into the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The original number passed as an argument.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item20'
+									>
+										<div class="fixedFont heading" id="writeU4">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>writeU4</b>(val_u4)
+										</div>
+										
+										<div class="description">
+											Writes a half-byte (4 bits) value into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_u4</b>
+														
+													</dt>
+													<dd>The number (4 bits) to be written into the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The original number passed as an argument.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										<div class="hr"></div>
+									</li>
+								
+									<li 
+										 class='item21'
+									>
+										<div class="fixedFont heading" id="writeU8">
+											<span class='lighter'>
+											
+											</span>
+											
+											<span class="light">{Number}</span>
+											
+											<b>writeU8</b>(val_u8)
+										</div>
+										
+										<div class="description">
+											Writes a byte (8 bits) value into the bitstream.
+											
+											
+											
+											
+										</div>
+										
+										
+										
+										
+											<dl class="detailList params">
+												<dt class="heading">Parameters:</dt>
+												
+													<dt>
+														<b>val_u8</b>
+														
+													</dt>
+													<dd>The number (8 bits) to be written into the bitstream.</dd>
+												
+											</dl>
+										
+										
+										
+											<dl class="detailList nomargin">
+											
+												
+												
+												
+												
+												
+												
+												
+													<dt class="heading">Returns:</dt>
+													
+														<dd><span class="light fixedFont">{Number}</span> The original number passed as an argument.</dd>
+													
+												
+												
+												
+												
+												
+											
+											</dl>
+										
+										
+									</li>
+								
+							</ul>
+						</div>
+					</div>
+				</section>
+			
+			
+	<!--
+	#### EVENT DETAILS
+	-->		
+			
+		</article>
+	</div>
+</div>
+
+		<script type="text/javascript">
+			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
+			codeview.classFilter.Init()
+		</script>
+	</body>
+</html>
+
