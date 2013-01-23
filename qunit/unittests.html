@@ -10,6 +10,136 @@
   <div id="qunit-fixture"></div>
   <script src="../jsbitstream.js"></script>
   <script src="qunit-1.10.0.js"></script>
+  <script type="text/javascript">
+      /**
+       * If QUnit is available it is safe to assume that JSBitStream is being unit tested so we willprovide the tools that
+       * give us additional info within the console.
+       */
+      if (QUnit !== undefined) {
+          'use strict';
+
+          JSBitStream.prototype.debug = true;
+          JSBitStream.prototype.lastBitsAdded = 0;  // debug only, shows how many bits have been added to the stream during the latest write
+
+          /**
+           * Serializes the bitstream for debugging.
+           * @param showLastAdd {Boolean} Show the last bits added. Defaults to false.
+           * @return {String} The serialized debug information.
+           */
+          JSBitStream.prototype.serialize = function (showLastAdd) {
+              if (showLastAdd === undefined) {
+                  showLastAdd = false;
+              }
+
+              if (this.data.length === 0) {
+                  return "\n<  empty  >";
+              }
+
+              var txt = "\n",
+                      chr,
+                      bin,
+                      lo,
+                      hi,
+                      lo16,
+                      hi16,
+                      lo2,
+                      hi2,
+                      strBit,
+                      endBit,
+                      c,
+                      f;
+
+              for (c = 0; c < this.data.length; c++) {
+                  chr = this.data.charCodeAt(c);
+
+                  lo = chr & 0xFF;
+                  hi = chr >> 8;
+                  lo16 = this.left_pad(lo.toString(16), 2, "0");
+                  hi16 = this.left_pad(hi.toString(16), 2, "0");
+                  lo2 = this.left_pad(lo.toString(2), 8, "0");
+                  hi2 = this.left_pad(hi.toString(2), 8, "0");
+
+                  bin = hi2 + lo2;
+
+                  if (c === 0) {
+                      bin = this.left_pad("", this.bitOffset, "+") + bin.substr(this.bitOffset);
+                  }
+
+                  txt += bin + "    0x" + hi16 + " 0x" + lo16 + "    " + this.left_pad(hi, 3, " ") + " " + this.left_pad(lo, 3, " ") + "    " + this.left_pad(chr, 5, " ") + "    " + String.fromCharCode(chr) + "\n";
+              }
+
+              if (showLastAdd) {
+                  strBit = (this.data.length * 16 - ((16 - this.lastCharBits) % 16) - (this.lastBitsAdded % 16)) % 16;
+                  endBit = strBit + this.lastBitsAdded;
+
+                  for (f = 0; f <= endBit - 1; f++) {
+                      if (f === 16) {
+                          txt += "\n";
+                      }
+
+                      if (f < strBit) {
+                          txt += " ";
+                      } else if (f === strBit) {
+                          if (this.lastBitsAdded === 1) {
+                              txt += "*";
+                          } else {
+                              txt += "<";
+                          }
+                      } else if (f === endBit - 1) {
+                          txt += ">";
+                      } else {
+                          txt += "-";
+                      }
+                  }
+              }
+
+              txt += "\nSIZE: " + this.size() + " bits / " + this.data.length + " characters\n";
+
+              return txt;
+          };
+
+          /**
+           * Left pads a string.
+           * @param val Value to be padded
+           * @param len Length to be padded to.
+           * @param str String to pad with.
+           * @return {String} The padded string.
+           */
+          JSBitStream.prototype.left_pad = function (val, len, str) {
+              var w;
+              val += "";
+              if (str === undefined) { str = "0"; }
+              for (w = val.length; w < len; w++) { val = str.charAt(0) + val; }
+              return val;
+          };
+
+          /**
+           * Log wrapper.
+           * @param severity {Number} Severity of the log message (0 - log, 1 - warn, 2 - error)
+           * @param message {String} The message to be logged.
+           */
+          JSBitStream.prototype.log = function (severity, message) {
+              switch (severity) {
+                  case 2:
+                      if (console.error !== undefined) {
+                          console.error(message);
+                      } else {
+                          this.log(0, "ERROR: " + message);
+                      }
+                      break;
+                  case 1:
+                      if (console.warn !== undefined) {
+                          console.warn(message);
+                      } else {
+                          this.log(0, "WARNING: " + message);
+                      }
+                      break;
+                  default: // 0
+                      console.log(message);
+              }
+          };
+      }
+  </script>
   <script src="tests.js"></script>
 </body>
 </html>
