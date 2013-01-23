@@ -13,24 +13,28 @@ var JSBitStream = function () {
 
 /**
  * The string buffer packing 16 bits into each Unicode character - every character represents two 8 bit values
+ * @private
  * @type {String}
  */
 JSBitStream.prototype.data = "";
 
 /**
  * The number of bits used in the first character
+ * @private
  * @type {Number}
  */
 JSBitStream.prototype.bitOffset = 0;
 
 /**
  * The number of used bits (0-15) in the final incomplete 16 bit character (0 if all 16 bits are used)
+ * @private
  * @type {Number}
  */
 JSBitStream.prototype.lastCharBits = 0;
 
 /**
  * Reads an arbitrary string from the stream.
+ * @public
  * @return {String} The string read.
  */
 JSBitStream.prototype.readString = function () {
@@ -100,6 +104,7 @@ JSBitStream.prototype.readString = function () {
 
 /**
  * Writes an arbitrary string into the bitstream.
+ * @public
  * @param val (string) The string value to be written.
  * @param lowerCase (boolean) Shows whether the string can be represented in a lower case format.
  *                            Defaults to false. A full lowercase string takes less bits in the bitstream.
@@ -198,6 +203,7 @@ JSBitStream.prototype.writeString = function (val, lowerCase) {
 /**
  * Reads a compressed integer from the bitstream. Useful for numbers where small (<256) and
  * large (>65536 or >4294967296) values fluctuate.
+ * @public
  * @return {Number|String} The integer read from the bitstream. For small numbers, this is a number, for large numbers
  *                         this is a string.
  */
@@ -220,6 +226,7 @@ JSBitStream.prototype.readInt = function () {
 /**
  * Writes a compressed integer into the bitstream. Use for numbers where small (<256)
  * and large (>65536 or >4294967296) values fluctuate.
+ * @public
  * @param val The number to be written into the bitstream. For extremely large values, this is treated as a string.
  * @return {Number|String} The value written into the bitstream.
  */
@@ -242,6 +249,7 @@ JSBitStream.prototype.writeInt = function (val) {
 
 /**
  * Reads a relative float (0-1) value from the bitstream with 8 bit precision.
+ * @public
  * @return {Number} The number read from the bitstream. Note that this number will have a difference of up to 0.008.
  */
 JSBitStream.prototype.readFloat = function () {
@@ -252,6 +260,7 @@ JSBitStream.prototype.readFloat = function () {
 
 /**
  * Writes a relative float (0-1) value into the bitstream with 8 bit precision.
+ * @public
  * @param val_float The value to be written into the bitstream. The value must be between 0 and 1 (inclusive).
  * @return {Number} The number written into the bitstream (not the number passed as the original argument).
  */
@@ -265,6 +274,7 @@ JSBitStream.prototype.writeFloat = function (val_float) {
 
 /**
  * Reads a 32 bit value from the bitstream.
+ * @public
  * @return {Number} The 32 bit number read from the bitstream.
  */
 JSBitStream.prototype.readU32 = function () {
@@ -276,6 +286,7 @@ JSBitStream.prototype.readU32 = function () {
 
 /**
  * Writes a 32 bit value into the bitstream.
+ * @public
  * @param val_u32 The number (32 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
@@ -288,6 +299,7 @@ JSBitStream.prototype.writeU32 = function (val_u32) {
 
 /**
  * Reads a 16 bit number from the bitstream.
+ * @public
  * @return {Number} The 16 bit number read from the bitstream.
  */
 JSBitStream.prototype.readU16 = function () {
@@ -298,6 +310,7 @@ JSBitStream.prototype.readU16 = function () {
 
 /**
  * Writes a 16 bit value into the bitstream.
+ * @public
  * @param val_u16 The number (16 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
@@ -310,6 +323,7 @@ JSBitStream.prototype.writeU16 = function (val_u16) {
 
 /**
  * Reads a byte (8 bits) from the bitstream.
+ * @public
  * @return {Number} The 8 bit number read from the bitstream.
  */
 JSBitStream.prototype.readU8 = function () {
@@ -320,6 +334,7 @@ JSBitStream.prototype.readU8 = function () {
 
 /**
  * Writes a byte (8 bits) value into the bitstream.
+ * @public
  * @param val_u8 The number (8 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
@@ -332,6 +347,7 @@ JSBitStream.prototype.writeU8 = function (val_u8) {
 
 /**
  * Reads a half-byte (4 bits) from the bitstream.
+ * @public
  * @return {Number} The 4 bit number read from the bitstream.
  */
 JSBitStream.prototype.readU4 = function () {
@@ -342,6 +358,7 @@ JSBitStream.prototype.readU4 = function () {
 
 /**
  * Writes a half-byte (4 bits) value into the bitstream.
+ * @public
  * @param val_u4 The number (4 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
@@ -354,6 +371,7 @@ JSBitStream.prototype.writeU4 = function (val_u4) {
 
 /**
  * Reads a boolean value from the bitstream.
+ * @public
  * @return {Boolean} The boolean value read from the bitstream.
  */
 JSBitStream.prototype.readFlag = function () {
@@ -364,6 +382,7 @@ JSBitStream.prototype.readFlag = function () {
 
 /**
  * Writes a boolean value into the bitstream.
+ * @public
  * @param val_boolean The boolean value to be written into the bitstream.
  * @return {Boolean} The original boolean value passed as an argument.
  */
@@ -377,6 +396,7 @@ JSBitStream.prototype.writeFlag = function (val_boolean) {
 /**
  * Reads an arbitrary amount of bits and returns it as a JSBitStream object. This always reads from bitOffset. The
  * final portion of the stream that was read is then shifted to have a 0 offset before converting to a type.
+ * @private
  * @param count The number of bits to be read from the bitstream.
  * @return {JSBitStream} The JSBitStream object representing the bits read.
  */
@@ -463,6 +483,7 @@ JSBitStream.prototype.readBits = function (count) {
 
 /**
  * Writes an arbitrary amount of bits into the stream.
+ * @private
  * @param writeBuffer {String} A bit packed string containing the value to be written.
  * @param bitCount {Number} The number of bits to write. Must be equal or less than 16 * the number of characters in
  *                          writeBuffer.
