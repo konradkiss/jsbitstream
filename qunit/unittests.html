@@ -12,21 +12,21 @@
   <script src="qunit-1.10.0.js"></script>
   <script type="text/javascript">
       /**
-       * If QUnit is available it is safe to assume that JSBitStream is being unit tested so we willprovide the tools that
+       * If QUnit is available it is safe to assume that jsbitstream is being unit tested so we willprovide the tools that
        * give us additional info within the console.
        */
       if (QUnit !== undefined) {
           'use strict';
 
-          JSBitStream.prototype.debug = true;
-          JSBitStream.prototype.lastBitsAdded = 0;  // debug only, shows how many bits have been added to the stream during the latest write
+          jsbitstream.prototype.debug = true;
+          jsbitstream.prototype.lastBitsAdded = 0;  // debug only, shows how many bits have been added to the stream during the latest write
 
           /**
            * Serializes the bitstream for debugging.
            * @param showLastAdd {Boolean} Show the last bits added. Defaults to false.
            * @return {String} The serialized debug information.
            */
-          JSBitStream.prototype.serialize = function (showLastAdd) {
+          jsbitstream.prototype.serialize = function (showLastAdd) {
               if (showLastAdd === undefined) {
                   showLastAdd = false;
               }
@@ -105,7 +105,7 @@
            * @param str String to pad with.
            * @return {String} The padded string.
            */
-          JSBitStream.prototype.left_pad = function (val, len, str) {
+          jsbitstream.prototype.left_pad = function (val, len, str) {
               var w;
               val += "";
               if (str === undefined) { str = "0"; }
@@ -118,7 +118,7 @@
            * @param severity {Number} Severity of the log message (0 - log, 1 - warn, 2 - error)
            * @param message {String} The message to be logged.
            */
-          JSBitStream.prototype.log = function (severity, message) {
+          jsbitstream.prototype.log = function (severity, message) {
               switch (severity) {
                   case 2:
                       if (console.error !== undefined) {

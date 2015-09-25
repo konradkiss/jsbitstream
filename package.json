@@ -1,0 +1,35 @@
+{
+  "name": "jsbitstream",
+  "version": "1.0.0",
+  "description": "A Node.js library to read and write bits in a bitstream.",
+  "main": "jsbitstream.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonradKiss/jsbitstream.git"
+  },
+  "keywords": [
+    "bit",
+    "stream",
+    "bitstream",
+    "int",
+    "flag",
+    "u4",
+    "u16",
+    "u8",
+    "u32",
+    "string",
+    "ascii"
+  ],
+  "author": "Konrad Kiss <konrad@konradkiss.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KonradKiss/jsbitstream/issues"
+  },
+  "homepage": "https://github.com/KonradKiss/jsbitstream#readme"
+}

@@ -1,13 +1,13 @@
 /**
- * JSBitStream is a Javascript class to read and write bit level data into and out of a stream.
+ * jsbitstream is a Javascript class to read and write bit level data into and out of a stream.
  * It was created to preserve as many bits and bytes during network communication as possible without sacrificing
  * speed (ie. through compression). It was intended to prepare network packets for multiplayer HTML5 games.
  *
  * @class
- * @name JSBitStream
+ * @name jsbitstream
  * @namespace
  */
-var JSBitStream = function () {
+var jsbitstream = function() {
     'use strict';
 };
 
@@ -16,28 +16,28 @@ var JSBitStream = function () {
  * @private
  * @type {String}
  */
-JSBitStream.prototype.data = "";
+jsbitstream.prototype.data = "";
 
 /**
  * The number of bits used in the first character
  * @private
  * @type {Number}
  */
-JSBitStream.prototype.bitOffset = 0;
+jsbitstream.prototype.bitOffset = 0;
 
 /**
  * The number of used bits (0-15) in the final incomplete 16 bit character (0 if all 16 bits are used)
  * @private
  * @type {Number}
  */
-JSBitStream.prototype.lastCharBits = 0;
+jsbitstream.prototype.lastCharBits = 0;
 
 /**
  * Reads an arbitrary string from the stream.
  * @public
  * @return {String} The string read.
  */
-JSBitStream.prototype.readString = function () {
+jsbitstream.prototype.readString = function() {
     'use strict';
 
     var typeId = this.readU4(),
@@ -47,53 +47,57 @@ JSBitStream.prototype.readString = function () {
 
     while (l--) {
         switch (typeId) {
-        case 5:  // numeric 4 bit
-            c = this.readBits(4).data.charCodeAt(0) >> 12;
-            if (c === 4) {
-                c = 32;
-            } else {
-                c += 43;
-            }
-            break;
-        case 4:  // lowercase alpha 5 bit
-            c = this.readBits(5).data.charCodeAt(0) >> 11;
-            if (c === 26) {         // space
-                c = 32;
-            } else if (c === 27) {  // |
-                c = 124;
-            } else if (c === 28) {  // '
-                c = 39;
-            } else if (c === 29) {  // -
-                c = 45;
-            } else if (c === 30) {  // .
-                c = 46;
-            } else if (c === 31) {  // ,
-                c = 44;
-            } else {
-                c += 97;           // a-z
-            }
-            break;
-        case 3:  // alphanumeric 6 bit
-            c = this.readBits(6).data.charCodeAt(0) >> 10;
-            if (c === 62) {         // ,
-                c = 44;
-            } else if (c === 63) {  // space
-                c = 32;
-            } else {
-                c += 48;
-                if (c >= 58) { c += 7; }
-                if (c >= 91) { c += 6; }
-            }
-            break;
-        case 2:  // low ascii 7 bit
-            c = this.readBits(7).data.charCodeAt(0) >> 9;
-            break;
-        case 1:  // ascii 8 bit
-            c = this.readBits(8).data.charCodeAt(0) >> 8;
-            break;
-        default: // unicode
-            c = this.readBits(16).data.charCodeAt(0);
-            break;
+            case 5: // numeric 4 bit
+                c = this.readBits(4).data.charCodeAt(0) >> 12;
+                if (c === 4) {
+                    c = 32;
+                } else {
+                    c += 43;
+                }
+                break;
+            case 4: // lowercase alpha 5 bit
+                c = this.readBits(5).data.charCodeAt(0) >> 11;
+                if (c === 26) { // space
+                    c = 32;
+                } else if (c === 27) { // |
+                    c = 124;
+                } else if (c === 28) { // '
+                    c = 39;
+                } else if (c === 29) { // -
+                    c = 45;
+                } else if (c === 30) { // .
+                    c = 46;
+                } else if (c === 31) { // ,
+                    c = 44;
+                } else {
+                    c += 97; // a-z
+                }
+                break;
+            case 3: // alphanumeric 6 bit
+                c = this.readBits(6).data.charCodeAt(0) >> 10;
+                if (c === 62) { // ,
+                    c = 44;
+                } else if (c === 63) { // space
+                    c = 32;
+                } else {
+                    c += 48;
+                    if (c >= 58) {
+                        c += 7;
+                    }
+                    if (c >= 91) {
+                        c += 6;
+                    }
+                }
+                break;
+            case 2: // low ascii 7 bit
+                c = this.readBits(7).data.charCodeAt(0) >> 9;
+                break;
+            case 1: // ascii 8 bit
+                c = this.readBits(8).data.charCodeAt(0) >> 8;
+                break;
+            default: // unicode
+                c = this.readBits(16).data.charCodeAt(0);
+                break;
         }
 
         txt += String.fromCharCode(c);
@@ -110,7 +114,7 @@ JSBitStream.prototype.readString = function () {
  *                            Defaults to false. A full lowercase string takes less bits in the bitstream.
  * @return {String} The string that was inserted into the bitstream.
  */
-JSBitStream.prototype.writeString = function (val, lowerCase) {
+jsbitstream.prototype.writeString = function(val, lowerCase) {
     'use strict';
 
     if (lowerCase === undefined) {
@@ -132,11 +136,21 @@ JSBitStream.prototype.writeString = function (val, lowerCase) {
 
     for (t = 0; t < val.length; t++) {
         c = val.charCodeAt(t);
-        if ((c < 43 || c > 57 || c === 47) && c !== 32) { numericOnly = false; } // includes: +,-.space
-        if ((c < 97 || c > 122) && c !== 32 && c !== 124 && c !== 39 && c !== 46 && c !== 44) { lowerCaseCharactersOnly = false; } // includes '|-., and space
-        if ((c < 48 || c > 57) && (c < 65 || c > 90) && (c < 97 || c > 122) && (c !== 32 && c !== 39)) { alphanumericOnly = false; } // includes , and space
-        if (c > 127) { lowASCIIOnly = false; }
-        if (c > 255) { asciiOnly = false; }
+        if ((c < 43 || c > 57 || c === 47) && c !== 32) {
+            numericOnly = false;
+        } // includes: +,-.space
+        if ((c < 97 || c > 122) && c !== 32 && c !== 124 && c !== 39 && c !== 46 && c !== 44) {
+            lowerCaseCharactersOnly = false;
+        } // includes '|-., and space
+        if ((c < 48 || c > 57) && (c < 65 || c > 90) && (c < 97 || c > 122) && (c !== 32 && c !== 39)) {
+            alphanumericOnly = false;
+        } // includes , and space
+        if (c > 127) {
+            lowASCIIOnly = false;
+        }
+        if (c > 255) {
+            asciiOnly = false;
+        }
     }
 
     typeId = (numericOnly ? 5 : (lowerCaseCharactersOnly ? 4 : (alphanumericOnly ? 3 : (lowASCIIOnly ? 2 : (asciiOnly ? 1 : 0))))) & 0x000F;
@@ -147,53 +161,57 @@ JSBitStream.prototype.writeString = function (val, lowerCase) {
     for (t = 0; t < val.length; t++) {
         c = val.charCodeAt(t);
         switch (typeId) {
-        case 5:     // 5 - numeric only (4 bits) (0-15) - includes: +,-.space
-            if (c === 32) {
-                c = 4; // space instead of /
-            } else {
-                c -= 43;
-            }
-            this.writeBits(String.fromCharCode((c << 12) & 0xF000), 4);
-            break;
-        case 4:     // 4 - lowercase alpha only (5 bits) (0-31) - includes space|'-.,
-            if (c === 32) {         // space
-                c = 26;
-            } else if (c === 124) {  // |
-                c = 27;
-            } else if (c === 39) {  // '
-                c = 28;
-            } else if (c === 45) {  // -
-                c = 29;
-            } else if (c === 46) {  // .
-                c = 30;
-            } else if (c === 44) {  // ,
-                c = 31;
-            } else {
-                c -= 97;          // a-z
-            }
-            this.writeBits(String.fromCharCode((c << 11) & 0xF800), 5);
-            break;
-        case 3:     // 3 - alphanumeric only (6 bits) (0-63) - includes , and space
-            if (c === 44) {         // ,
-                c = 62;
-            } else if (c === 32) {  // space
-                c = 63;
-            } else {
-                c -= 48;
-                if (c >= 17) { c -= 7; }
-                if (c >= 42) { c -= 6; }
-            }
-            this.writeBits(String.fromCharCode((c << 10) & 0xFC00), 6);
-            break;
-        case 2:     // 2 - low ascii only (7 bit) (0-127)
-            this.writeBits(String.fromCharCode((c << 9) & 0xFE00), 7);
-            break;
-        case 1:     // 1 - ascii only (8 bits)
-            this.writeBits(String.fromCharCode((c << 8) & 0xFF00), 8);
-            break;
-        default:    // 0 - unicode (16 bits)
-            this.writeBits(String.fromCharCode(c & 0xFFFF), 16);
-            break;
+            case 5: // 5 - numeric only (4 bits) (0-15) - includes: +,-.space
+                if (c === 32) {
+                    c = 4; // space instead of /
+                } else {
+                    c -= 43;
+                }
+                this.writeBits(String.fromCharCode((c << 12) & 0xF000), 4);
+                break;
+            case 4: // 4 - lowercase alpha only (5 bits) (0-31) - includes space|'-.,
+                if (c === 32) { // space
+                    c = 26;
+                } else if (c === 124) { // |
+                    c = 27;
+                } else if (c === 39) { // '
+                    c = 28;
+                } else if (c === 45) { // -
+                    c = 29;
+                } else if (c === 46) { // .
+                    c = 30;
+                } else if (c === 44) { // ,
+                    c = 31;
+                } else {
+                    c -= 97; // a-z
+                }
+                this.writeBits(String.fromCharCode((c << 11) & 0xF800), 5);
+                break;
+            case 3: // 3 - alphanumeric only (6 bits) (0-63) - includes , and space
+                if (c === 44) { // ,
+                    c = 62;
+                } else if (c === 32) { // space
+                    c = 63;
+                } else {
+                    c -= 48;
+                    if (c >= 17) {
+                        c -= 7;
+                    }
+                    if (c >= 42) {
+                        c -= 6;
+                    }
+                }
+                this.writeBits(String.fromCharCode((c << 10) & 0xFC00), 6);
+                break;
+            case 2: // 2 - low ascii only (7 bit) (0-127)
+                this.writeBits(String.fromCharCode((c << 9) & 0xFE00), 7);
+                break;
+            case 1: // 1 - ascii only (8 bits)
+                this.writeBits(String.fromCharCode((c << 8) & 0xFF00), 8);
+                break;
+            default: // 0 - unicode (16 bits)
+                this.writeBits(String.fromCharCode(c & 0xFFFF), 16);
+                break;
         }
     }
 
@@ -207,7 +225,7 @@ JSBitStream.prototype.writeString = function (val, lowerCase) {
  * @return {Number|String} The integer read from the bitstream. For small numbers, this is a number, for large numbers
  *                         this is a string.
  */
-JSBitStream.prototype.readInt = function () {
+jsbitstream.prototype.readInt = function() {
     'use strict';
 
     if (this.readFlag()) { // 8 bit?
@@ -230,7 +248,7 @@ JSBitStream.prototype.readInt = function () {
  * @param val The number to be written into the bitstream. For extremely large values, this is treated as a string.
  * @return {Number|String} The value written into the bitstream.
  */
-JSBitStream.prototype.writeInt = function (val) {
+jsbitstream.prototype.writeInt = function(val) {
     'use strict';
 
     val *= 1;
@@ -252,7 +270,7 @@ JSBitStream.prototype.writeInt = function (val) {
  * @public
  * @return {Number} The number read from the bitstream. Note that this number will have a difference of up to 0.008.
  */
-JSBitStream.prototype.readFloat = function () {
+jsbitstream.prototype.readFloat = function() {
     'use strict';
 
     return (this.readU8() & 0xFF) / 255;
@@ -264,7 +282,7 @@ JSBitStream.prototype.readFloat = function () {
  * @param val_float The value to be written into the bitstream. The value must be between 0 and 1 (inclusive).
  * @return {Number} The number written into the bitstream (not the number passed as the original argument).
  */
-JSBitStream.prototype.writeFloat = function (val_float) {
+jsbitstream.prototype.writeFloat = function(val_float) {
     'use strict';
 
     val_float = (val_float * 255) & 0xFF;
@@ -277,7 +295,7 @@ JSBitStream.prototype.writeFloat = function (val_float) {
  * @public
  * @return {Number} The 32 bit number read from the bitstream.
  */
-JSBitStream.prototype.readU32 = function () {
+jsbitstream.prototype.readU32 = function() {
     'use strict';
 
     var readStr = this.readBits(32).data.toString();
@@ -290,7 +308,7 @@ JSBitStream.prototype.readU32 = function () {
  * @param val_u32 The number (32 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
-JSBitStream.prototype.writeU32 = function (val_u32) {
+jsbitstream.prototype.writeU32 = function(val_u32) {
     'use strict';
 
     this.writeBits(String.fromCharCode(val_u32 >> 16 & 0xFFFF) + String.fromCharCode(val_u32 & 0xFFFF), 32);
@@ -302,7 +320,7 @@ JSBitStream.prototype.writeU32 = function (val_u32) {
  * @public
  * @return {Number} The 16 bit number read from the bitstream.
  */
-JSBitStream.prototype.readU16 = function () {
+jsbitstream.prototype.readU16 = function() {
     'use strict';
 
     return (this.readBits(16).data.toString()).charCodeAt(0) & 0xFFFF;
@@ -314,7 +332,7 @@ JSBitStream.prototype.readU16 = function () {
  * @param val_u16 The number (16 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
-JSBitStream.prototype.writeU16 = function (val_u16) {
+jsbitstream.prototype.writeU16 = function(val_u16) {
     'use strict';
 
     this.writeBits(String.fromCharCode(val_u16 & 0xFFFF), 16);
@@ -326,7 +344,7 @@ JSBitStream.prototype.writeU16 = function (val_u16) {
  * @public
  * @return {Number} The 8 bit number read from the bitstream.
  */
-JSBitStream.prototype.readU8 = function () {
+jsbitstream.prototype.readU8 = function() {
     'use strict';
 
     return ((this.readBits(8).data.toString()).charCodeAt(0) & 0xFF00) >> 8;
@@ -338,7 +356,7 @@ JSBitStream.prototype.readU8 = function () {
  * @param val_u8 The number (8 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
-JSBitStream.prototype.writeU8 = function (val_u8) {
+jsbitstream.prototype.writeU8 = function(val_u8) {
     'use strict';
 
     this.writeBits(String.fromCharCode((val_u8 & 0xFF) * 0x100), 8);
@@ -350,7 +368,7 @@ JSBitStream.prototype.writeU8 = function (val_u8) {
  * @public
  * @return {Number} The 4 bit number read from the bitstream.
  */
-JSBitStream.prototype.readU4 = function () {
+jsbitstream.prototype.readU4 = function() {
     'use strict';
 
     return ((this.readBits(4).data.toString()).charCodeAt(0) & 0xF000) >> 12;
@@ -362,7 +380,7 @@ JSBitStream.prototype.readU4 = function () {
  * @param val_u4 The number (4 bits) to be written into the bitstream.
  * @return {Number} The original number passed as an argument.
  */
-JSBitStream.prototype.writeU4 = function (val_u4) {
+jsbitstream.prototype.writeU4 = function(val_u4) {
     'use strict';
 
     this.writeBits(String.fromCharCode((val_u4 & 0x0F) * 0x1000), 4);
@@ -374,7 +392,7 @@ JSBitStream.prototype.writeU4 = function (val_u4) {
  * @public
  * @return {Boolean} The boolean value read from the bitstream.
  */
-JSBitStream.prototype.readFlag = function () {
+jsbitstream.prototype.readFlag = function() {
     'use strict';
 
     return ((this.readBits(1).data.toString()).charCodeAt(0) & 0x8000) === 0x8000;
@@ -386,7 +404,7 @@ JSBitStream.prototype.readFlag = function () {
  * @param val_boolean The boolean value to be written into the bitstream.
  * @return {Boolean} The original boolean value passed as an argument.
  */
-JSBitStream.prototype.writeFlag = function (val_boolean) {
+jsbitstream.prototype.writeFlag = function(val_boolean) {
     'use strict';
 
     this.writeBits(val_boolean ? String.fromCharCode(0x8000) : String.fromCharCode(0x0000), 1);
@@ -394,13 +412,13 @@ JSBitStream.prototype.writeFlag = function (val_boolean) {
 };
 
 /**
- * Reads an arbitrary amount of bits and returns it as a JSBitStream object. This always reads from bitOffset. The
+ * Reads an arbitrary amount of bits and returns it as a jsbitstream object. This always reads from bitOffset. The
  * final portion of the stream that was read is then shifted to have a 0 offset before converting to a type.
  * @private
  * @param count The number of bits to be read from the bitstream.
- * @return {JSBitStream} The JSBitStream object representing the bits read.
+ * @return {jsbitstream} The jsbitstream object representing the bits read.
  */
-JSBitStream.prototype.readBits = function (count) {
+jsbitstream.prototype.readBits = function(count) {
     'use strict';
 
     if (this.size() < count) {
@@ -408,7 +426,7 @@ JSBitStream.prototype.readBits = function (count) {
     }
 
     // TODO: does this work with node?
-    var readStream = new JSBitStream(),
+    var readStream = new jsbitstream(),
         toReadCount,
         prevBitOffset = this.bitOffset,
         originalCount = count,
@@ -488,7 +506,7 @@ JSBitStream.prototype.readBits = function (count) {
  * @param bitCount {Number} The number of bits to write. Must be equal or less than 16 * the number of characters in
  *                          writeBuffer.
  */
-JSBitStream.prototype.writeBits = function (writeBuffer, bitCount) {
+jsbitstream.prototype.writeBits = function(writeBuffer, bitCount) {
     'use strict';
 
     bitCount = Math.min(bitCount, writeBuffer.length * 16);
@@ -573,15 +591,10 @@ JSBitStream.prototype.writeBits = function (writeBuffer, bitCount) {
  * Returns the number of bits within the stream.
  * @return {Number} teh number of bits within the stream.
  */
-JSBitStream.prototype.size = function () {
+jsbitstream.prototype.size = function() {
     'use strict';
 
     return (this.data.length * 16) - this.bitOffset - ((16 - this.lastCharBits) % 16);
 };
 
-/**
- * If this is running under node.js, export the JSBitStream object.
- */
-if (module !== undefined && module.exports) {
-    module.exports.JSBitStream = JSBitStream;
-}
+module.exports = jsbitstream;

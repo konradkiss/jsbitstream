@@ -1,21 +1,21 @@
-**Attention! This library is rather young and it is still to be tested in a live scenario. Although there are thorough unit tests included, be sure to do additional tests tailored to your own environment before using the class.**
-
-# JSBitStream #
+# `jsbitstream` #
 ---
 
 ## What is it? ##
 
-JSBitStream is a Javascript class to read and write bit level data into and out of a stream. It was created to preserve as many bits and bytes during network communication as possible without sacrificing speed (ie. through compression). It was intended to prepare network packets for multiplayer HTML5 games.
+`jsbitstream` is a Javascript class to read and write bit level data into and out of a stream. It was created to preserve as many bits and bytes during network communication as possible without sacrificing speed (ie. through compression). It was intended to prepare data packets for networked communications, but it's also a nice way to conserve bits where data storage is limited.
+
+Of course you can use it to read binary data on a socket and not make use of the compression. You are always in control of what your data types are. Defining your own types is always a little bit more efficient, but you can also let the system work out proper types for you and not worry about type settings. Read on to find out more.
 
 ## How does it work? ##
 
 Instead of sending an entire 16 bits for every unicode character of your data, depending on the type it is possible to decrease the size of your data down to a single bit. When these bits are compressed together, you can save much bandwidth through your stream's size.
 
-You can write any value or string and concatenate all these values regardless of where a byte or a character boundary would be. All the bits of your data are stored as unicode text. The last character has its bits padded with zeroes to make sure it forms a full 16 bit unicode character.
+You can write any value or string and concatenate all these values regardless of where a byte or a character boundary would be. All the bits of your data are stored as unicode text. The last character has its bits padded with zeroes to make sure it forms a full 16 bit unicode character so that the stream can be represented as a string.
 
-Writing to a stream adds bits at the end of the stream while reading from a stream strips data from the beginning of the stream - so the stream's size keeps changing automatically as you write to and read from it. For this reason you need to have the same amount and same kind of reads as you had writes.
+Writing to a stream adds new bits at the end of the stream while reading from a stream strips data from the beginning of the stream - so the stream's size keeps changing automatically as you write to and read from it. For this reason you need to have the same amount and same kind of reads as you had writes. This again is useful in network communications as it's a good way to catch reads and writes that go out of sync.
 
-The class has built-in methods to read and write the kind of data that appears in games, such as:
+The class has built-in methods to read and write the following kinds of data:
 * Booleans (true or false)
 * Floats with a value between 0 and 1 with 8 bit precision
 * Integers with a 4, 8, 16 and 32 bit fixed or variable bit count
@@ -31,7 +31,7 @@ The class has built-in methods to read and write the kind of data that appears i
 
 ```javascript
 // create the stream
-var stream = new JSBitStream();
+var stream = new `jsbitstream`();
 
 // write some data to the stream
 stream.writeInt(3);
@@ -78,13 +78,11 @@ console.log(stream.data); // returns an empty string as each read also removes t
 
 All read methods return the proper value as a boolean (readFlag()), a 0-1 float (readFloat), a string (readString() and readInt() for integers taking more than 32 bits) and an integers.
 
-## Node.js support ##
-
-The class is intended to be usable both on the client (browser) and server (node.js) side. However, node.js support is still untested.
-
 ## Testing ##
 
-QUnit tests are included. Edit qunit/tests.js to change, launch qunit/unittests.html to run the tests. Open the javascript console to see additional, bit level information (available only when the QUnit object is available). Note that writing to the console and testing the code makes the class methods run significantly slower than how it would normally run.
+I hope to update these tests and dump QUnit in favor of Karma. Any help would be very much appreciated! For now, the few years old QUnit tests are included.
+
+Edit qunit/tests.js to change, launch qunit/unittests.html to run the tests. Open the javascript console to see additional, bit level information (available only when the QUnit object is available). Note that writing to the console and testing the code makes the class methods run significantly slower than how it would normally run. 
 
 Example bit level debug information that is available in the console:
 
@@ -105,9 +103,9 @@ Example bit level debug information that is available in the console:
 
 ## License ##
 
-JSBitStream is licensed under the terms of the MIT license;
+`jsbitstream` is licensed under the terms of the MIT license;
 
-> Copyright © 2012 Konrad Kiss
+> Copyright © 2012-2015 Konrad Kiss
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 > 

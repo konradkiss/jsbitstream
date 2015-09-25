@@ -6,7 +6,7 @@ if(typeof window.QUnit!='object'){test=function(t,c){c();};equal=function(e,c,m)
 
 test( "Multiple misc Read / Write operations", function()
 {
-   var stream = new JSBitStream();
+   var stream = new jsbitstream();
 
    // writeFloat (used for a value between 0 and 1) will convert the float to an unsigned 8 bit integer
    // and will sometimes lose some precision while saving 24 bits on the bitstream
