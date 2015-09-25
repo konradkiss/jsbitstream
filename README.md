@@ -31,7 +31,7 @@ The class has built-in methods to read and write the following kinds of data:
 
 ```javascript
 // create the stream
-var stream = new `jsbitstream`();
+var stream = new jsbitstream();
 
 // write some data to the stream
 stream.writeInt(3);
