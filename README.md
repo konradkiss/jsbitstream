@@ -29,6 +29,8 @@ The class has built-in methods to read and write the following kinds of data:
 
 ## Example usage ##
 
+See [https://runkit.com/embed/iin67ocprm1v](https://runkit.com/embed/iin67ocprm1v) to try out the following example in your browser.
+
 ```javascript
 // create the stream
 var stream = new jsbitstream();
@@ -105,7 +107,7 @@ Example bit level debug information that is available in the console:
 
 `jsbitstream` is licensed under the terms of the MIT license;
 
-> Copyright © 2012-2015 Konrad Kiss
+> Copyright © 2012-2017 Konrad Kiss
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 > 
